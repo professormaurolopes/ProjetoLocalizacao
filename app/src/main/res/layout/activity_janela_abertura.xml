@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.edu.ifma.dai.maurolcsilva.projetolocalizacao.JanelaAbertura"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/lblLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Latitude:"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblResultadoLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Longitude:"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblResultadoLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnBuscarEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar Endereço" />
+
+    <TextView
+        android:id="@+id/lblEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resultado..."
+        android:textSize="18sp" />
+</LinearLayout>
