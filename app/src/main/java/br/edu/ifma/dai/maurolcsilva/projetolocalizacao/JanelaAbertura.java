@@ -2,6 +2,7 @@ package br.edu.ifma.dai.maurolcsilva.projetolocalizacao;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -25,6 +26,7 @@ public class JanelaAbertura extends Activity implements LocationListener,View.On
     private TextView lblLongituderesposta;
     private TextView lblEnderecoresposta;
     private Button btnBuscarEndereco;
+    private Button btnMostrarMapa;
     @SuppressWarnings("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,9 @@ public class JanelaAbertura extends Activity implements LocationListener,View.On
         lblLongituderesposta = (TextView) findViewById(R.id.lblResultadoLongitude);
         lblEnderecoresposta = (TextView) findViewById(R.id.lblEndereco);
         btnBuscarEndereco = (Button) findViewById(R.id.btnBuscarEndereco);
+        btnMostrarMapa = (Button) findViewById(R.id.btnMostrarMapa);
         btnBuscarEndereco.setOnClickListener(this);
+        btnMostrarMapa.setOnClickListener(this);
         //Criacao do objeto de Servico de Localizacao
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         //Configuracao
@@ -71,7 +75,19 @@ public class JanelaAbertura extends Activity implements LocationListener,View.On
         latitude = lblLatituderesposta.getText().toString();
         longitude = lblLongituderesposta.getText().toString();
 
-        new BuscaEndereco().execute(latitude,longitude);
+        if (v.getId() == R.id.btnBuscarEndereco){
+            new BuscaEndereco().execute(latitude,longitude);
+        }
+        else {
+            Intent it = new Intent(this,JanelaMapa.class);
+            Bundle params = new Bundle();
+            params.putString("latitude",latitude);
+            params.putString("longitude",longitude);
+            it.putExtras(params);
+            startActivity(it);
+        }
+
+
     }
 
     private class BuscaEndereco extends AsyncTask<String, Integer,String>{

@@ -44,6 +44,12 @@
         android:layout_height="wrap_content"
         android:text="Buscar Endereço" />
 
+    <Button
+        android:id="@+id/btnMostrarMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mostrar no Mapa" />
+
     <TextView
         android:id="@+id/lblEndereco"
         android:layout_width="match_parent"

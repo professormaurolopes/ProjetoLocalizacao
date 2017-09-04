@@ -13,11 +13,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class JanelaMapa extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private double latitude;
+    private double longitude;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_janela_mapa);
+        Bundle params = getIntent().getExtras();
+        this.latitude = Double.parseDouble(params.getString("latitude"));
+        this.longitude = Double.parseDouble(params.getString("longitude"));;
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -40,12 +47,12 @@ public class JanelaMapa extends FragmentActivity implements OnMapReadyCallback {
 
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-2.5375443, -44.2771319);
+        LatLng local = new LatLng(this.latitude, this.longitude);
         MarkerOptions marca = new MarkerOptions();
-        marca.position(sydney);
+        marca.position(local);
         marca.title("IFMA");
         marca.snippet("Campos Monte Castelo");
         mMap.addMarker(marca);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,18));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(local,18));
     }
 }
